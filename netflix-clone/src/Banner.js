@@ -7,24 +7,19 @@ function Banner() {
   const [movie,setMovie] = useState([])
   useEffect(() => {
     async function fetchData() {
-      console.log('fetchdata');
       const req = await axios.get(requests.fetchNetflixOriginals);
-      console.log(req);
       setMovie(
         req.data.results[
           Math.floor(Math.random()*req.data.results.length-1)
         ]
       );
-      console.log(req);
       return req;
     }
     fetchData();
   }, []);
 
   
-  console.log(movie);
   function truncateString(str, num) {
-    console.log(str);
     if (str?.length > num) {
       return str.slice(0, num) + "...";
     } else {
